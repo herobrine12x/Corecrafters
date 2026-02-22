@@ -1,0 +1,194 @@
+
+:root {
+    --bg-dark: #222224;
+    --bg-light: #F8F8F8;
+    --card-white: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #888888;
+    --text-light-nav: #B0B0B0;
+    --text-active-nav: #222222;
+    --accent-red-light: #FFE2E5;
+    --accent-red: #FA5A7D;
+    --accent-orange-light: #FFF4DE;
+    --accent-orange: #FF947A;
+    --accent-purple-light: #F3E8FF;
+    --accent-purple: #BF83FF;
+    --accent-blue: #3CDDFA;
+    --accent-blue-dark: #5B8DFF;
+    --accent-teal: #00C4B4;
+    --accent-yellow: #FFD335;
+    --accent-green: #27AE60;
+    --border-radius: 20px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-dark); height: 100vh; display: flex; overflow: hidden; }
+
+/* Sidebar */
+.sidebar { width: 260px; background-color: var(--bg-dark); color: white; padding: 30px 20px; display: flex; flex-direction: column; flex-shrink: 0; }
+.logo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding-left: 10px; }
+.logo h2 { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+.mobile-close-btn { display: none; font-size: 24px; cursor: pointer; color: white; }
+.menu-label { color: #666; font-size: 12px; font-weight: 500; margin-bottom: 15px; padding-left: 10px; }
+.sidebar ul { list-style: none; margin-bottom: 20px; }
+.sidebar ul li { margin-bottom: 8px; }
+.sidebar ul li a { text-decoration: none; color: var(--text-light-nav); display: flex; align-items: center; padding: 12px 15px; border-radius: 12px; font-size: 14px; font-weight: 400; transition: all 0.2s ease; cursor: pointer; }
+.sidebar ul li a i { margin-right: 12px; font-size: 18px; }
+.sidebar ul li.active a { background-color: white; color: var(--text-active-nav); font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.settings-label { margin-top: auto; margin-top: 20px; }
+
+/* Main Content */
+.main-content { flex: 1; background-color: var(--bg-light); border-top-left-radius: 40px; border-bottom-left-radius: 40px; padding: 40px; overflow-y: auto; position: relative; transition: all 0.3s ease; }
+.mobile-menu-toggle { display: none; position: absolute; top: 35px; left: 20px; font-size: 24px; color: var(--text-primary); cursor: pointer; z-index: 9999; background: white; padding: 8px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.sidebar-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 900; opacity: 0; transition: opacity 0.3s ease; }
+.sidebar-overlay.active { opacity: 1; }
+.view-section { display: none; animation: fadeIn 0.3s ease; height: 100%; }
+.view-section.active-view { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Header & Components */
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+.welcome-text h1 { font-size: 28px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+.welcome-text p { color: var(--text-secondary); font-size: 14px; }
+.sync-status { font-size: 12px; color: var(--text-secondary); font-weight: 500; }
+
+.card { background: var(--card-white); border-radius: var(--border-radius); padding: 25px; box-shadow: var(--shadow); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.header-title { display: flex; align-items: center; gap: 12px; }
+.header-title h3 { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.icon-circle { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.icon-red-small { background-color: var(--accent-red); color: white; }
+.icon-orange-small { background-color: var(--accent-orange); color: white; }
+.week-badge { font-size: 12px; color: var(--text-secondary); font-weight: 500; }
+
+/* Dashboard Specifics */
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 25px; }
+.stat-card { display: flex; align-items: flex-start; gap: 20px; }
+.stat-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.icon-red { background-color: var(--accent-red-light); color: var(--accent-red); }
+.icon-orange { background-color: var(--accent-orange-light); color: var(--accent-orange); }
+.icon-purple { background-color: var(--accent-purple-light); color: var(--accent-purple); }
+.stat-info h3 { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+.stat-info .value { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.stat-info .unit { font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+.stat-info .subtext { font-size: 11px; color: var(--text-secondary); }
+.dashboard-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px; }
+
+/* Goals & Progress */
+.goal-item { margin-bottom: 25px; }
+.goal-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+.blue-text { color: var(--accent-blue-dark); }
+.orange-text { color: var(--accent-orange); }
+.yellow-text { color: #D4B200; }
+.goal-progress { color: var(--text-secondary); font-weight: 500; font-size: 12px; }
+.progress-bar { width: 100%; height: 10px; background-color: #F1F1F1; border-radius: 10px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 10px; }
+.fill-blue { background-color: var(--accent-blue-dark); }
+.fill-orange { background-color: var(--accent-orange); }
+.fill-yellow { background-color: var(--accent-yellow); }
+
+/* Supplements */
+.streak-badge { font-size: 12px; color: var(--accent-orange); background: var(--accent-orange-light); padding: 4px 10px; border-radius: 20px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+.supplement-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+.supplement-item { background-color: white; border: 1px solid #F0F0F0; padding: 15px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; }
+.status-btn { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 12px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.status-taken { background: #E0F5E8; color: var(--accent-green); }
+.status-later { background: #F8F8F8; color: #AAA; border: 1px solid #EEE; }
+
+/* Workouts & Performance */
+.workouts-container { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.workout-col-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.workout-col-header h3 { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.badge { padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.badge-gray { background: #EEE; color: #666; }
+.badge-green { background: #E0F5E8; color: #27AE60; }
+.workout-card { background: white; border-radius: 20px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); border: 1px solid transparent; transition: all 0.2s; }
+.workout-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.workout-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.w-name { font-weight: 700; font-size: 16px; }
+.w-status { font-size: 12px; color: #888; font-weight: 500; }
+.w-desc { font-size: 12px; color: #666; margin-bottom: 12px; display: block; }
+.mini-progress { height: 6px; width: 100%; background: #F1F1F1; border-radius: 4px; overflow: hidden; }
+.mini-fill { height: 100%; border-radius: 4px; }
+.fill-cyan { background-color: var(--accent-teal); }
+.fill-blue-bright { background-color: var(--accent-blue-dark); }
+
+.perf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+.perf-card { padding: 20px; background: white; border-radius: 20px; box-shadow: var(--shadow); }
+.perf-label { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 15px; display: block; }
+.perf-value { font-size: 28px; font-weight: 800; color: var(--text-primary); }
+.perf-sub { font-size: 12px; color: #888; display: block; margin-top: 5px; }
+.perf-stat-green { color: var(--accent-teal); font-weight: 600; font-size: 14px; }
+.chart-container { background: white; border-radius: 20px; padding: 30px; box-shadow: var(--shadow); }
+.line-chart-svg { width: 100%; height: 200px; }
+.chart-line { fill: none; stroke: var(--accent-teal); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
+/* === NEW STYLES FOR NUTRITION === */
+.nutrition-layout { display: flex; flex-direction: column; gap: 30px; }
+.nutrition-top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.macro-card { display: flex; align-items: center; justify-content: center; gap: 20px; }
+.macro-donut { width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(var(--accent-blue-dark) 0% 30%, var(--accent-orange) 30% 60%, var(--accent-teal) 60% 100%); position: relative; }
+.donut-hole { width: 100px; height: 100px; background: white; border-radius: 50%; position: absolute; top: 20px; left: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+.macro-legend { display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+.legend-item { display: flex; align-items: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot-blue { background: var(--accent-blue-dark); } .dot-orange { background: var(--accent-orange); } .dot-teal { background: var(--accent-teal); }
+.reco-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.reco-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
+.bg-red { background: #FF6B6B; } .bg-blue { background: #4D96FF; }
+.meal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.meal-card { text-align: center; padding: 20px; }
+.meal-img { width: 60px; height: 60px; background: #F5F5F5; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #666; }
+
+/* === NEW STYLES FOR SHOP === */
+.shop-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; }
+.shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.shop-item { text-align: center; }
+.shop-img { width: 80px; height: 80px; background: #F8F8F8; border-radius: 12px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #444; }
+.shop-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+.price { font-weight: 700; color: var(--accent-orange); margin-bottom: 10px; }
+.add-btn { background: var(--accent-yellow); border: none; padding: 8px 15px; border-radius: 20px; font-weight: 600; cursor: pointer; width: 100%; }
+.small-chart { height: 80px; }
+
+/* === NEW STYLES FOR GOALS PAGE === */
+.goals-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.goals-right-col { display: flex; flex-direction: column; gap: 25px; }
+.target-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; font-size: 13px; font-weight: 600; }
+.target-bar { flex: 1; height: 8px; background: #F0F0F0; border-radius: 4px; margin: 0 15px; overflow: hidden; }
+.t-fill { height: 100%; background: #27AE60; border-radius: 4px; }
+.achieve-item { display: flex; justify-content: space-between; align-items: center; background: #F8F9FA; padding: 15px; border-radius: 12px; margin-bottom: 15px; }
+.icon-blue { color: var(--accent-blue-dark); font-size: 20px; }
+
+/* === NEW STYLES FOR ACCOUNT === */
+.account-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.profile-pic { font-size: 24px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-size: 12px; color: #888; margin-bottom: 5px; }
+.form-group input { width: 100%; padding: 12px; border: 1px solid #EEE; border-radius: 12px; background: #F9F9F9; }
+.security-box { background: #F0F0F0; padding: 15px; border-radius: 12px; margin-top: 20px; }
+.change-pass-btn { background: #DDD; border: none; padding: 8px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px; width: 100%; }
+.setting-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-weight: 600; font-size: 14px; }
+.toggle-switch { width: 40px; height: 22px; background: #DDD; border-radius: 20px; position: relative; cursor: pointer; }
+.toggle-switch.active { background: var(--accent-teal); }
+.toggle-switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: white; border-radius: 50%; transition: 0.3s; }
+.toggle-switch.active::after { left: 21px; }
+.theme-options { display: flex; gap: 15px; margin-top: 15px; margin-bottom: 30px; }
+.theme-opt { flex: 1; padding: 20px; border-radius: 12px; background: #EEE; text-align: center; font-weight: 600; cursor: pointer; }
+.theme-opt.dark-theme { background: #222; color: white; }
+.theme-opt.light-theme { background: white; border: 2px solid var(--accent-teal); color: black; }
+.save-btn { width: 100%; background: var(--accent-teal); color: white; padding: 15px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sidebar { position: fixed; top: 0; left: 0; height: 100%; width: 280px; transform: translateX(-100%); box-shadow: 4px 0 20px rgba(0,0,0,0.2); }
+    .sidebar.active-sidebar { transform: translateX(0); }
+    .mobile-menu-toggle { display: block; }
+    .mobile-close-btn { display: block; }
+    .main-content { padding: 20px; padding-top: 80px; border-radius: 0; }
+    .sidebar-overlay { display: block; pointer-events: none; }
+    .sidebar-overlay.active { pointer-events: auto; }
+    .stats-row, .dashboard-grid, .workouts-container, .perf-grid, .nutrition-top-row, .meal-grid, .shop-layout, .shop-grid, .goals-layout, .account-layout { grid-template-columns: 1fr; }
+    .bar { width: 25px; }
+    .header { padding-left: 50px; }
+}

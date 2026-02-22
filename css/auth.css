@@ -1,0 +1,109 @@
+/* Import variables and base resets from your vibe */
+body.auth-page {
+    /* Uses your --bg-dark color (#222224) at 85% opacity as an overlay, with the image behind it */
+    background: linear-gradient(rgba(34, 34, 36, 0.85), rgba(34, 34, 36, 0.85)), url('../img/auth-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    padding: 20px;
+}
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    animation: fadeIn 0.5s ease;
+}
+
+.brand-logo {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.brand-logo h2 {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+/* Auth Card Styling */
+.auth-card {
+    background: var(--card-white);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.auth-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.auth-header h1 {
+    font-size: 24px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Form Styling - Reusing your existing form-group logic */
+.auth-page .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-page .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    padding-left: 5px;
+}
+
+.auth-page .form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid #F0F0F0;
+    border-radius: 12px;
+    background: #F9F9F9;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.auth-page .form-group input:focus {
+    outline: none;
+    border-color: var(--accent-teal);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 196, 180, 0.1);
+}
+
+/* Toggle Link */
+.toggle-container {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.toggle-link {
+    color: var(--accent-teal);
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.toggle-link:hover {
+    opacity: 0.8;
+}
+
+.hidden {
+    display: none;
+}

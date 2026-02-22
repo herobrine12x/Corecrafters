@@ -1,0 +1,283 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreCrafters App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" onclick="window.toggleSidebar()"></div>
+
+    <aside class="sidebar" id="app-sidebar">
+        <div class="logo">
+            <h2>CoreCrafters Stud.</h2>
+            <div class="mobile-close-btn" onclick="window.toggleSidebar()"><i class="ri-close-line"></i></div>
+        </div>
+
+        <nav class="menu">
+            <p class="menu-label">Menu</p>
+            <ul>
+                <li class="active" onclick="window.switchView('dashboard', 'dashboard', this)"><a><i class="ri-dashboard-line"></i> Dashboard</a></li>
+                <li onclick="window.switchView('workouts', 'workouts', this)"><a><i class="ri-run-line"></i> Workouts</a></li>
+                <li onclick="window.switchView('performance', 'performance', this)"><a><i class="ri-pulse-line"></i> Performance</a></li>
+                <li onclick="window.switchView('nutrition', 'nutrition', this)"><a><i class="ri-restaurant-line"></i> Nutrition</a></li>
+                <li onclick="window.switchView('supplements', 'supplements', this)"><a><i class="ri-capsule-line"></i> Supplements</a></li>
+                <li onclick="window.switchView('goals', 'goals', this)"><a><i class="ri-flag-2-line"></i> Goals</a></li>
+                <li onclick="window.switchView('dashboard', 'badges', this)"><a><i class="ri-medal-line"></i> Badges</a></li>
+            </ul>
+
+            <p class="menu-label settings-label">Settings</p>
+            <ul>
+                <li onclick="window.switchView('account', 'account', this)"><a><i class="ri-user-settings-line"></i> Account settings</a></li>
+                <li onclick="window.switchView('dashboard', 'preferences', this)"><a><i class="ri-settings-4-line"></i> Preferences</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="mobile-menu-toggle" onclick="window.toggleSidebar()"><i class="ri-menu-line"></i></div>
+
+        <div id="view-dashboard" class="view-section active-view">
+            <header class="header"><div class="welcome-text"><h1>Dashboard</h1><p>Welcome back, User!</p></div><div class="sync-status">Last synced: Today 12:48 AM</div></header>
+            <section class="stats-row">
+                <div class="card stat-card"><div class="stat-icon icon-red"><i class="ri-e-bike-2-fill"></i></div><div class="stat-info"><h3>Active Calories</h3><p class="value">640 <span class="unit">kcal</span></p><p class="subtext">vs yesterday</p></div></div>
+                <div class="card stat-card"><div class="stat-icon icon-orange"><i class="ri-walk-fill"></i></div><div class="stat-info"><h3>Steps Today</h3><p class="value">8,421 <span class="unit">/ 10k</span></p><p class="subtext">vs yesterday</p></div></div>
+                <div class="card stat-card"><div class="stat-icon icon-purple"><i class="ri-moon-clear-fill"></i></div><div class="stat-info"><h3>Sleep Score</h3><p class="value">45 <span class="unit">min</span></p><p class="subtext">vs yesterday</p></div></div>
+            </section>
+            <section class="dashboard-grid">
+                <div class="card goals-card">
+                    <div class="card-header"><div class="header-title"><div class="icon-circle icon-red-small"><i class="ri-target-line"></i></div><h3>Weekly Goals</h3></div><span class="week-badge">Week 2</span></div>
+                    <div class="goal-item"><div class="goal-info"><span class="goal-name blue-text">Workouts</span><span class="goal-progress">3/5 Sessions</span></div><div class="progress-bar"><div class="progress-fill fill-blue" style="width: 60%;"></div></div></div>
+                    <div class="goal-item"><div class="goal-info"><span class="goal-name orange-text">Steps</span><span class="goal-progress">8,421/10,000 Steps</span></div><div class="progress-bar"><div class="progress-fill fill-orange" style="width: 84%;"></div></div></div>
+                    <div class="goal-item"><div class="goal-info"><span class="goal-name yellow-text">Active Minutes</span><span class="goal-progress">270/300 Mins</span></div><div class="progress-bar"><div class="progress-fill fill-yellow" style="width: 90%;"></div></div></div>
+                </div>
+                <div class="card supplements-card">
+                    <div class="card-header"><div class="header-title"><div class="icon-circle icon-orange-small"><i class="ri-capsule-fill"></i></div><h3>Supplements</h3></div><span class="streak-badge"><i class="ri-fire-fill"></i> Day streak</span></div>
+                    <ul class="supplement-list">
+                        <li class="supplement-item"><div style="display:flex; align-items:center; gap:10px; font-size:13px; font-weight:600;"><i class="ri-check-line" style="background:#E0F5E8; color:#27AE60; padding:4px; border-radius:6px;"></i> Creatine Monohydrate</div></li>
+                        <li class="supplement-item"><div style="display:flex; align-items:center; gap:10px; font-size:13px; font-weight:600;"><i class="ri-check-line" style="background:#E0F5E8; color:#27AE60; padding:4px; border-radius:6px;"></i> Protein</div></li>
+                        <li class="supplement-item"><div style="display:flex; align-items:center; gap:10px; font-size:13px; font-weight:600; color:#888;"><i class="ri-time-line" style="background:#F5F5F5; padding:4px; border-radius:6px;"></i> Omega-3</div></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div id="view-workouts" class="view-section">
+            <header class="header"><div class="welcome-text"><h1>Workouts</h1><p>Come on, Let's strengthen your body!</p></div></header>
+            <div class="workouts-container">
+                <div class="workout-column">
+                    <div class="workout-col-header"><h3 style="color:var(--accent-teal)"><i class="ri-home-4-line"></i> Indoor Workouts</h3><span class="badge badge-gray">Home/Gym</span></div>
+                    <div class="workout-card"><div class="workout-header"><span class="w-name">Yoga</span><span class="w-status">12/15 Programs</span></div><div class="mini-progress"><div class="mini-fill fill-cyan" style="width: 80%;"></div></div></div>
+                    <div class="workout-card"><div class="workout-header"><span class="w-name">Strength</span><span class="w-status">8/10 Programs</span></div><div class="mini-progress"><div class="mini-fill fill-cyan" style="width: 80%;"></div></div></div>
+                </div>
+                <div class="workout-column">
+                    <div class="workout-col-header"><h3 style="color:var(--accent-blue-dark)"><i class="ri-tree-line"></i> Outdoor Workouts</h3><span class="badge badge-green">Fresh Air Mode</span></div>
+                    <div class="workout-card"><div class="workout-header"><span class="w-name">Running</span><span class="status-completed">Completed</span></div><div class="mini-progress"><div class="mini-fill fill-blue-bright" style="width: 100%;"></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-performance" class="view-section">
+            <header class="header"><div class="welcome-text"><h1>Performance</h1><p>Let see your progress</p></div></header>
+            <div class="perf-grid">
+                <div class="perf-card"><span class="perf-label">Strength Score</span><span class="perf-value" style="color:var(--accent-teal)">75 <span style="font-size:14px; color:#888;">/100</span></span></div>
+                <div class="perf-card"><span class="perf-label">Steps Today</span><span class="perf-value" style="color:var(--accent-teal)">8,421</span></div>
+                <div class="perf-card"><span class="perf-label">Sleep Score</span><span class="perf-value" style="color:var(--accent-teal)">8 <span style="font-size:12px; color:#888;">hours</span></span></div>
+            </div>
+            <div class="chart-container">
+                <svg class="line-chart-svg" viewBox="0 0 400 150" preserveAspectRatio="none"><polyline points="0,120 50,70 150,60 250,40 350,30" class="chart-line" /></svg>
+            </div>
+        </div>
+
+        <div id="view-nutrition" class="view-section">
+            <header class="header"><div class="welcome-text"><h1>Nutrition</h1><p>Welcome back, User!</p></div></header>
+            
+            <div class="nutrition-layout">
+                <div class="nutrition-top-row">
+                    <div class="card macro-card">
+                        <div class="macro-donut">
+                            <div class="donut-hole">
+                                <span>Nutrition</span>
+                                <small>per field</small>
+                            </div>
+                        </div>
+                        <div class="macro-legend">
+                            <div class="legend-item"><span class="dot dot-blue"></span> Proteins</div>
+                            <div class="legend-item"><span class="dot dot-orange"></span> Carbs</div>
+                            <div class="legend-item"><span class="dot dot-teal"></span> Fats</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card reco-card">
+                        <h3>Dietary Recommendations</h3>
+                        <div class="reco-item">
+                            <div class="reco-icon bg-red"><i class="ri-apple-fill"></i></div>
+                            <div><span>Eat more fruits</span><small>Rich in vitamins</small></div>
+                        </div>
+                        <div class="reco-item">
+                            <div class="reco-icon bg-blue"><i class="ri-drop-fill"></i></div>
+                            <div><span>Stay hydrated</span><small>Proper hydration</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="section-title">Calorie intake</h3>
+                <div class="meal-grid">
+                    <div class="card meal-card">
+                        <div class="meal-img"><i class="ri-cup-fill"></i></div>
+                        <h4>Breakfast</h4>
+                        <p>430 cal</p>
+                    </div>
+                    <div class="card meal-card">
+                        <div class="meal-img"><i class="ri-restaurant-fill"></i></div>
+                        <h4>Lunch</h4>
+                        <p>565 cal</p>
+                    </div>
+                    <div class="card meal-card">
+                        <div class="meal-img"><i class="ri-goblet-fill"></i></div>
+                        <h4>Dinner</h4>
+                        <p>445 cal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-supplements" class="view-section">
+            <header class="header"><div class="welcome-text"><h1>Supplements Shop</h1><p>Fuel Your Fitness Journey</p></div></header>
+            
+            <div class="shop-layout">
+                <div class="shop-main">
+                    <h3>Featured Supplements</h3>
+                    <div class="shop-grid">
+                        <div class="card shop-item">
+                            <div class="shop-img"><i class="ri-flask-line"></i></div>
+                            <h4>Whey Protein</h4>
+                            <p class="price">$29.99</p>
+                            <button class="add-btn">Add to Cart</button>
+                        </div>
+                        <div class="card shop-item">
+                            <div class="shop-img"><i class="ri-flask-fill"></i></div>
+                            <h4>Creatine</h4>
+                            <p class="price">$19.99</p>
+                            <button class="add-btn">Add to Cart</button>
+                        </div>
+                        <div class="card shop-item">
+                            <div class="shop-img"><i class="ri-capsule-fill"></i></div>
+                            <h4>Omega-3</h4>
+                            <p class="price">$24.99</p>
+                            <button class="add-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shop-sidebar">
+                    <div class="card supplements-card">
+                        <div class="card-header"><div class="header-title"><h3>Supplements</h3></div><span class="streak-badge">5 Days</span></div>
+                        <ul class="supplement-list">
+                            <li class="supplement-item"><span>Creatine</span><div class="status-btn status-taken"><i class="ri-check-line"></i></div></li>
+                            <li class="supplement-item"><span>Protein</span><div class="status-btn status-later"><i class="ri-hourglass-line"></i></div></li>
+                        </ul>
+                        <div style="margin-top:20px;">
+                            <h4>7 Days Streak</h4>
+                            <div class="bar-chart small-chart">
+                                <div class="bar" style="height:80%"></div>
+                                <div class="bar" style="height:100%"></div>
+                                <div class="bar" style="height:60%"></div>
+                                <div class="bar" style="height:90%"></div>
+                                <div class="bar" style="height:100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-goals" class="view-section">
+            <header class="header"><div class="welcome-text"><h1>Goals</h1><p>Target that!</p></div></header>
+            
+            <div class="goals-layout">
+                <div class="card goals-card">
+                    <div class="card-header"><div class="header-title"><div class="icon-circle icon-red-small"><i class="ri-target-line"></i></div><h3>Weekly Goals</h3></div><span class="week-badge">Week 2</span></div>
+                    <div class="goal-item"><div class="goal-info"><span class="goal-name blue-text">Workouts</span><span class="goal-progress">3/5</span></div><div class="progress-bar"><div class="progress-fill fill-blue" style="width: 60%;"></div></div></div>
+                    <div class="goal-item"><div class="goal-info"><span class="goal-name orange-text">Steps</span><span class="goal-progress">8k/10k</span></div><div class="progress-bar"><div class="progress-fill fill-orange" style="width: 84%;"></div></div></div>
+                    <div class="goal-item"><div class="goal-info"><span class="goal-name yellow-text">Sleep</span><span class="goal-progress">7h</span></div><div class="progress-bar"><div class="progress-fill fill-yellow" style="width: 90%;"></div></div></div>
+                </div>
+
+                <div class="goals-right-col">
+                    <div class="card targets-card">
+                        <h3>Targets this month</h3>
+                        <div class="target-row"><span>Weight</span><div class="target-bar"><div class="t-fill" style="width:50%"></div></div><span>52kg</span></div>
+                        <div class="target-row"><span>Biceps</span><div class="target-bar"><div class="t-fill" style="width:70%"></div></div><span>34cm</span></div>
+                        <div class="target-row"><span>Chest</span><div class="target-bar"><div class="t-fill" style="width:80%"></div></div><span>98cm</span></div>
+                    </div>
+
+                    <div class="card achievements-card">
+                        <h3>Achievements</h3>
+                        <div class="achieve-item">
+                            <div class="a-text"><h4>Legend</h4><small>Reach 100km</small></div>
+                            <i class="ri-medal-fill icon-blue"></i>
+                        </div>
+                        <div class="achieve-item">
+                            <div class="a-text"><h4>Strongman</h4><small>Lift 100kg</small></div>
+                            <i class="ri-trophy-fill icon-blue"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-account" class="view-section">
+            <header class="header"><div class="welcome-text"><h1>Account Settings</h1><p>Welcome back, User!</p></div></header>
+            
+            <div class="account-layout">
+                <div class="card personal-card">
+                    <div class="card-header"><h3>Personal details</h3><i class="ri-pencil-line"></i></div>
+                    <div class="profile-pic"><i class="ri-user-smile-line"></i> Hi!</div>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="email@example.com">
+                    </div>
+                    <div class="security-box">
+                        <h4>Security & Privacy</h4>
+                        <button class="change-pass-btn"><i class="ri-lock-line"></i> Change password</button>
+                    </div>
+                </div>
+
+                <div class="card settings-card">
+                    <h3>Notification settings</h3>
+                    <div class="setting-row">
+                        <span>Email notifications</span>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                    <div class="setting-row">
+                        <span>Push notifications</span>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                    
+                    <h3 style="margin-top:30px;">Theme settings</h3>
+                    <div class="theme-options">
+                        <div class="theme-opt dark-theme"><span>Dark</span></div>
+                        <div class="theme-opt light-theme active"><span>Light</span></div>
+                    </div>
+                    <button class="save-btn">Save preferences</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
